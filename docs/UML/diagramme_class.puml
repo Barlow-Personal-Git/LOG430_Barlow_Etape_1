@@ -1,0 +1,44 @@
+@startuml
+
+class Produit {
+    -idProduit: int
+    -nom: string
+    -prix: float
+    -quantite: int
+}
+
+class Inventaire {
+    -produits: List<Produit>
+    -recherche(): Produit
+    -addProduit(): void
+}
+
+class Vente {
+    -idVente: int
+    -produits: List<Produit>
+    -total: float
+    +calculerTotal(): float
+}
+
+class Caisse {
+    -idCaisse: int
+    +vente(): void
+}
+
+class Employer {
+    -idEmployer: int
+    -nom: int
+}
+
+class Consommateur {
+    -idConsommateur: int
+    -nom: string
+}
+
+Inventaire "1" -- "0..*" Produit : contient >
+Vente "1" -- "1..*" Produit : peut >
+Caisse "1" -- "0..*" Vente : enregistre >
+Employer "1" -- "1" Caisse : assigne >
+Vente "1" -- "1" Consommateur : procure par
+
+@enduml

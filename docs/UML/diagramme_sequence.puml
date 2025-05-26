@@ -1,0 +1,13 @@
+@startuml
+actor Employer
+participant "Vente"
+participant "Caisse"
+participant "Inventaire"
+participant "MangoDB"
+
+Employer -> "Vente" : enregisterVente(produits)
+"Vente" -> "Inventaire" : verifierInventaire()
+"Inventaire" -> "Vente" : ok
+"Vente" -> "MangoDB" : enregistrer()
+"MangoDB" -> "Vente" : ok
+@enduml
