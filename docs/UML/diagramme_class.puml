@@ -9,8 +9,6 @@ class Produit {
 
 class Inventaire {
     -produits: List<Produit>
-    -recherche(): Produit
-    -addProduit(): void
 }
 
 class Vente {
@@ -20,25 +18,22 @@ class Vente {
     +calculerTotal(): float
 }
 
-class Caisse {
-    -idCaisse: int
-    +vente(): void
+class Menu {
+    +recherche(): Produit
+    +addProduit(): void
 }
 
-class Employer {
-    -idEmployer: int
-    -nom: int
-}
-
-class Consommateur {
-    -idConsommateur: int
+class Client {
+    -idClient: int
     -nom: string
+    -username: string
+    -password: string
 }
 
 Inventaire "1" -- "0..*" Produit : contient >
 Vente "1" -- "1..*" Produit : peut >
-Caisse "1" -- "0..*" Vente : enregistre >
-Employer "1" -- "1" Caisse : assigne >
-Vente "1" -- "1" Consommateur : procure par
+Menu "1" -- "1" Inventaire : consute >
+Client "1" -- "1" Menu : utilise >
+Vente "1" -- "1" Client : procure par >
 
 @enduml

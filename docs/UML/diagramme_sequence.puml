@@ -1,13 +1,12 @@
 @startuml
-actor Employer
+actor Client
 participant "Vente"
-participant "Caisse"
 participant "Inventaire"
-participant "MangoDB"
+participant "SQLite"
 
-Employer -> "Vente" : enregisterVente(produits)
+Client -> "Vente" : enregisterVente(produits)
 "Vente" -> "Inventaire" : verifierInventaire()
 "Inventaire" -> "Vente" : ok
-"Vente" -> "MangoDB" : enregistrer()
-"MangoDB" -> "Vente" : ok
+"Vente" -> "SQLite" : enregistrer()
+"SQLite" -> "Vente" : ok
 @enduml

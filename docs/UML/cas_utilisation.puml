@@ -1,0 +1,20 @@
+@startuml
+actor "Client" as Client
+actor "Système" as Systeme
+
+usecase "Démarrer une vente" as UC1
+usecase "Ajouter une produite dans la vente" as UC2
+usecase "Annuler la vente courante" as UC3
+usecase "Consulter les produits dans la vente" as UC4
+usecase "Enlever une produite dans la vente" as UC5
+usecase "Afficher le prix total" as UC6
+usecase "Imprimer le reçu" as UC7
+
+Client --> UC1
+Client --> UC2
+Client --> UC3
+Client --> UC4
+Client --> UC5
+Systeme --> UC6
+Client --> UC7
+@enduml
