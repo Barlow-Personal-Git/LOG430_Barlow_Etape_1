@@ -1,0 +1,12 @@
+@startuml
+actor Client
+participant "Vente"
+participant "Inventaire"
+participant "SQLite"
+
+Client -> "Vente" : enregisterVente(produits)
+"Vente" -> "Inventaire" : verifierInventaire()
+"Inventaire" -> "Vente" : ok
+"Vente" -> "SQLite" : enregistrer()
+"SQLite" -> "Vente" : ok
+@enduml

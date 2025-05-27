@@ -1,0 +1,39 @@
+@startuml
+
+class Produit {
+    -idProduit: int
+    -nom: string
+    -prix: float
+    -quantite: int
+}
+
+class Inventaire {
+    -produits: List<Produit>
+}
+
+class Vente {
+    -idVente: int
+    -produits: List<Produit>
+    -total: float
+    +calculerTotal(): float
+}
+
+class Menu {
+    +recherche(): Produit
+    +addProduit(): void
+}
+
+class Client {
+    -idClient: int
+    -nom: string
+    -username: string
+    -password: string
+}
+
+Inventaire "1" -- "0..*" Produit : contient >
+Vente "1" -- "1..*" Produit : peut >
+Menu "1" -- "1" Inventaire : consute >
+Client "1" -- "1" Menu : utilise >
+Vente "1" -- "1" Client : procure par >
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+skinparam componentStyle rectangle
+
+package "Application de la console" {
+
+  package "Présentation" {
+    component "Interface Utilisateur (menu, affichage)" as UI
+  }
+
+  package "Logique métier" {
+    component "GestionVente"
+    component "GestionInventaire"
+    component "GestionMenu"
+  }
+
+  package "Persistance" {
+    component "SQLAlchemy"
+    component "Model (Produit, Client)"
+  }
+
+  UI --> GestionVente
+  UI --> GestionInventaire
+  UI --> GestionMenu
+
+  GestionVente --> "SQLAlchemy"
+  GestionInventaire --> "SQLAlchemy"
+  GestionMenu --> "SQLAlchemy"
+
+  "SQLAlchemy" --> "Model (Produit, Client)"
+}
+@enduml

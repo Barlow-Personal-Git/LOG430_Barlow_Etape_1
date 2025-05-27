@@ -1,0 +1,15 @@
+@startuml
+skinparam componentStyle rectangle
+
+node "Console du magasin" {
+  
+  node "Client" {
+    component "Interface utilisateur"
+    component "ORM"
+  }
+
+  database "Data Source (SQLite)" as DB
+}
+
+"Client" --> DB
+@enduml
