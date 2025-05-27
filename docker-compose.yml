@@ -1,0 +1,5 @@
+services:
+ app:
+  build: .
+  image: pytest_app
+  command: pytest
