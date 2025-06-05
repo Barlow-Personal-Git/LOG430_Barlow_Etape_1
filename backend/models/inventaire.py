@@ -7,6 +7,7 @@ class Inventaire(Base):
 
     id_inventaire = Column(Integer, primary_key=True)
     id_produit = Column(Integer, ForeignKey('produits.id_produit'), nullable= False)
+    category = Column(String)
     nbr = Column(Integer)
 
     produit = relationship("Produit", back_populates="inventaires")
