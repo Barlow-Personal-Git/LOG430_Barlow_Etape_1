@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Produit, Inventaire, Base  
 
-engine = create_engine('sqlite:///database.db', echo=True)
+engine = create_engine('postgresql://log430:laboratoirelog430@localhost:5432/log430_lab', echo=True)
 
 Session = sessionmaker(bind=engine)
 session = Session()

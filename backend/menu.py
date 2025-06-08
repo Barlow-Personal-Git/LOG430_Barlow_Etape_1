@@ -2,14 +2,14 @@ from app import session
 from models import Produit, Inventaire
 
 def menu():
-    print("Veuillez sélectionner une des choix")
-    print("1. Rechercher un prodruit")
-    print("2. Enregistrer une vente")
-    print("3. Gérer les retours")
-    print("4. Consulter l'état du stock des produits")
-    print("5. Quitter")
-
     while True:
+        print("Veuillez sélectionner une des choix")
+        print("1. Rechercher un prodruit")
+        print("2. Enregistrer une vente")
+        print("3. Gérer les retours")
+        print("4. Consulter l'état du stock des produits")
+        print("5. Quitter")
+
         choix = input("Choix : ")
 
         if choix == "1" :
