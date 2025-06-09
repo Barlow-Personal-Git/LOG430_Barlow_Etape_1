@@ -2,7 +2,6 @@
 from unittest.mock import patch
 from app.controllers.recherche_controller import (
     menu_recherche_categorie,
-    menu_recherche_id,
     menu_recherche_nom
 )
 
