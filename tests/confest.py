@@ -1,7 +1,5 @@
 """"Partage setup"""
-from unittest.mock import patch
 from app.models import Produit, Inventaire, Client, Transaction
-from app.controllers.consulter_controller import consulter_liste_produit
 from app.db import session
 from app.client_session import ClientSession
 
@@ -35,13 +33,14 @@ def setup_function():
     session.add(inventaire)
     session.add(inventaire2)
     session.commit()
-    
+
     # Ajouter un client
     client = Client(nom="Test")
     session.add(client)
     session.commit()
-    
+
     # Préparer le singleton
-    ClientSession.set_client(client)
-    ClientSession.clear_vente()
-    ClientSession.add_produit(produit, 2)
+    client_session = ClientSession()
+    client_session.set_client(client)
+    client_session.clear_vente()
+    client_session.add_produit(produit, 2)
