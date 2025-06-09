@@ -9,4 +9,4 @@ def afficher_titre():
 def afficher_inventaire(produit, inventaire):
     """Affiche les produits consultés"""
     print(
-        f"- Nom : {produit.nom} | Prix: {produit.prix:.2f} | Quantité: {inventaire.nbr}")
+        f"- Nom : {produit.nom} | Prix: {produit.prix:.2f} | Catégory: {inventaire.category} | Quantité: {inventaire.nbr}")

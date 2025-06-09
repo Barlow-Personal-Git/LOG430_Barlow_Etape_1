@@ -28,7 +28,7 @@ def setup_function():
     # Ajouter un inventaire
     inventaire = Inventaire(
         id_produit=produit.id_produit,
-        categorie="Breuvage",
+        category="Breuvage",
         nbr=30
     )
     session.add(inventaire)
