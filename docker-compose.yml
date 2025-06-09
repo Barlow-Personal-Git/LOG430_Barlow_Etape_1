@@ -3,3 +3,16 @@ services:
   build: .
   image: pytest_app
   command: pytest
+  environment:
+    - DATABASE_URL=postgresql://user:password@host:port/log430_db
+  depends_on:
+    - db
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: log430_db
+    ports:
+      - "5432:5432"
