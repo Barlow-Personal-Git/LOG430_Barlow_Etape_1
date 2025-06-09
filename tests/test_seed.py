@@ -1,5 +1,4 @@
 """Tests unitaires Seed"""
-import pytest
 from app import session, Produit, Inventaire
 from seed import run_all
 
