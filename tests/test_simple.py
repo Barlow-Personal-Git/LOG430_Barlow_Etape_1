@@ -2,36 +2,36 @@
 """Tests unitaires"""
 
 
-def hello_world(self):
+def hello_world():
     """Retourne la valeur string"""
     return "Hello World"
 
 
-def increment(self, x):
+def increment(x):
     """Incremente x de 1."""
     return x + 1
 
 
-def decrement(self, x):
+def decrement(x):
     """Décrémente x de 1."""
     return x - 1
 
 
-def test_increment(self):
+def test_increment():
     """Test que increment() retourne 6"""
-    self.assertEqual(self.increment(5), 6)
+    assert increment(5) == 6
 
 
-def test_decrement(self):
+def test_decrement():
     """Test que decrement() retourne 4"""
-    self.assertEqual(self.decrement(5), 4)
+    assert decrement(5) == 4
 
 
-def test_increment_incorrect(self):
+def test_increment_incorrect():
     """Test que increment_incorrect() retourne false"""
-    self.assertNotEqual(self.increment(5), 7)
+    assert increment(5) != 7
 
 
-def test_hello_world(self):
+def test_hello_world():
     """Test que hello_world() retourne 'Hello World'"""
-    self.assertEqual(self.hello_world(), "Hello World")
+    assert hello_world() == "Hello World"

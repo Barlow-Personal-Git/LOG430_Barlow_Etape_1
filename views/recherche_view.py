@@ -41,7 +41,8 @@ def afficher_recherche_choix(recherche):
 
     if recherche == "categorie":
         print(
-            "\nInscriver le catégorie du produit ou taper 'Back' pour retourner en arrière")
+            "\nInscriver le catégorie du produit ou taper 'Back' pour retourner en arrière"
+        )
 
 
 def demander_recherche_choix(recherche):
@@ -54,6 +55,8 @@ def demander_recherche_choix(recherche):
 
     if recherche == "categorie":
         return input("Catégorie du produit : ")
+
+    return ""
 
 
 def afficher_titre_liste():
