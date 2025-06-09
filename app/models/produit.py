@@ -13,4 +13,3 @@ class Produit(Base):
 
     inventaires = relationship("Inventaire", back_populates="produit")
     transactions = relationship("TransactionProduit", back_populates="produit")
-

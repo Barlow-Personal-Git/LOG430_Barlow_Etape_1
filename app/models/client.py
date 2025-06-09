@@ -1,5 +1,5 @@
 """Client model""" 
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from .base import Base
 

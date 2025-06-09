@@ -1,3 +1,4 @@
+"""Consulter Controllers""" 
 from app.db import session
 from app.models import Inventaire
 from views import consulter_view

@@ -1,3 +1,4 @@
+"""Menu principal Controllers""" 
 from .recherche_controller import menu_recherche
 from .achat_controller import menu_achat
 from .consulter_controller import consulter_liste_produit

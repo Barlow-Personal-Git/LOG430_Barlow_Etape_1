@@ -1,3 +1,4 @@
+"""Consulter View""" 
 def afficher_titre():
     print("---Inventaires---")
 

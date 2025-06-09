@@ -1,3 +1,4 @@
+"""Connecter View""" 
 def afficher_bienvenue_magasin():
     print("Bienvenue au magasin Barlow Supermarket!")
 

@@ -1,3 +1,4 @@
+"""Instance Client""" 
 class ClientSession:
     _instance = None
 

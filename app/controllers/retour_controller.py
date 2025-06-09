@@ -1,3 +1,4 @@
+"""Retour vente Controllers""" 
 from app.db import session
 from app.models import Inventaire, Transaction
 from views import retour_view
@@ -28,14 +29,19 @@ def retourner_transaction():
         return
     
     client = client_session.get_client()
-    transaction = session.query(Transaction).filter_by(id_transaction=transaction_id, id_client=client.id_client).first()
+    transaction = session.query(Transaction).filter_by(
+        id_transaction=transaction_id, 
+        id_client=client.id_client
+    ).first()
     
     if not transaction:
         retour_view.afficher_vente_introuvable()
         return
     
     for tp in transaction.produits:
-        inventaire = session.query(Inventaire).filter_by(id_produit=tp.id_produit).first()
+        inventaire = session.query(Inventaire).filter_by(
+            id_produit=tp.id_produit
+        ).first()
         if inventaire:
             inventaire.nbr += tp.nbr
     
@@ -48,7 +54,9 @@ def retourner_transaction():
 
 def consulter_vente():
     client = client_session.get_client()
-    transactions = session.query(Transaction).filter_by(id_client=client.id_client).all()
+    transactions = session.query(Transaction).filter_by(
+        id_client=client.id_client
+    ).all()
 
     if not transactions:
         retour_view.afficher_vente_introuvable()
@@ -56,4 +64,3 @@ def consulter_vente():
     
     for transaction in transactions:
         retour_view.afficher_vente_disponible(transaction)
-

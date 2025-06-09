@@ -1,3 +1,4 @@
+"""Init models""" 
 from .base import Base
 from .produit import Produit
 from .inventaire import Inventaire

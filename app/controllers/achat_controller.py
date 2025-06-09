@@ -1,3 +1,4 @@
+"""Achat Controllers""" 
 from app.db import session
 from app.models import Produit, Inventaire, Transaction, TransactionProduit
 from views import achat_view
@@ -36,7 +37,9 @@ def ajouter_produit():
                 achat_view.afficher_zero()
                 continue
             
-            inventaire = session.query(Inventaire).filter(Inventaire.id_produit == resultat.id_produit).first()
+            inventaire = session.query(Inventaire).filter(
+                Inventaire.id_produit == resultat.id_produit
+            ).first()
             
             if not inventaire:
                 achat_view.afficher_inventaire_pas_enregistrer()
@@ -100,7 +103,9 @@ def confirmer_vente():
         nbr = item['nbr']
         total_produit = produit.prix * nbr
 
-        inventaire = session.query(Inventaire).filter(Inventaire.id_produit == produit.id_produit).first()
+        inventaire = session.query(Inventaire).filter(
+            Inventaire.id_produit == produit.id_produit
+        ).first()
         if not inventaire or inventaire.nbr < nbr:
             achat_view.afficher_insuffisant()
             session.rollback()
@@ -121,5 +126,3 @@ def confirmer_vente():
     
     client_session.clear_ventes()
     achat_view.afficher_vente_confirmer()
-
-    

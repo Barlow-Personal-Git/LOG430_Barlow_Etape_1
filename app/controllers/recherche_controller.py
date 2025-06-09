@@ -1,3 +1,4 @@
+"""Recherche menu Controllers""" 
 from app.db import session
 from app.models import Produit, Inventaire
 from views import recherche_view

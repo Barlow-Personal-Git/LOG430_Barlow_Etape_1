@@ -1,3 +1,4 @@
+"""Achat View""" 
 def afficher_choix():
     print("\nVeuillez sélectionner une des choix")
 
