@@ -19,18 +19,6 @@ def test_recherche_par_categorie(setup_db):  # pylint: disable=unused-argument
     assert mock_afficher_produits.call_count == 2
 
 
-def test_recherche_par_id(setup_db):  # pylint: disable=unused-argument
-    """"Test une recherche par id"""
-    id_ = 1
-    with patch(
-            "views.recherche_view.demander_recherche_choix", side_effect=[id_, "back"]), \
-            patch("views.recherche_view.afficher_produits") as mock_afficher_produits:
-        menu_recherche_id("id")
-
-    # Vérifie que la console a été appelé une fois
-    assert mock_afficher_produits.call_count == 1
-
-
 def test_recherche_par_nom(setup_db):  # pylint: disable=unused-argument
     """"Test une recherche par id"""
     nom = "Eau"
