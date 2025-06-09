@@ -8,6 +8,7 @@ client_session = ClientSession()
 
 
 def menu_achat():
+    """Affiche le menu pour consulter ou acheter des produits"""
     while True:
         achat_view.afficher_choix()
         achat_view.afficher_achat()
@@ -24,6 +25,7 @@ def menu_achat():
 
 
 def ajouter_produit():
+    """Ajouter des produits dans la vente"""
     while True:
         achat_view.afficher_ajouter_produit()
         produit_id = achat_view.demander_choix_ajouter()
@@ -56,6 +58,7 @@ def ajouter_produit():
 
 
 def consulter_produit():
+    """Consulter le panier et visualiser le total"""
     produits = client_session.get_produits()
     if not produits:
         achat_view.afficher_aucun_produit()
@@ -91,10 +94,12 @@ def consulter_produit():
 
 
 def restart_vente():
+    """Recommencer la vente"""
     client_session.clear_vente()
 
 
 def confirmer_vente():
+    """Confirmer les produits dans le panier"""
     client = client_session.get_client()
     produits = client_session.get_produits()
 

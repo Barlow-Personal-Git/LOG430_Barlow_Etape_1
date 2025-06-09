@@ -5,6 +5,7 @@ from views import recherche_view
 
 
 def menu_recherche():
+    """Affiche le menu recherche"""
     while True:
         recherche_view.afficher_choix()
         recherche_view.afficher_identifiant()
@@ -24,6 +25,7 @@ def menu_recherche():
 
 
 def menu_recherche_nom(recherche):
+    """Affiche le menu recherche par nom"""
     while True:
         recherche_view.afficher_recherche_choix(recherche)
         produit = recherche_view.demander_recherche_choix(recherche)
@@ -46,6 +48,7 @@ def menu_recherche_nom(recherche):
 
 
 def menu_recherche_id(recherche):
+    """Affiche le menu recherche par id"""
     while True:
         recherche_view.afficher_recherche_choix(recherche)
         produit = recherche_view.demander_recherche_choix(recherche)
@@ -65,6 +68,7 @@ def menu_recherche_id(recherche):
 
 
 def menu_recherche_categorie(recherche):
+    """Affiche le menu recherche par catégorie"""
     while True:
         recherche_view.afficher_recherche_choix(recherche)
         categorie = recherche_view.demander_recherche_choix(recherche)

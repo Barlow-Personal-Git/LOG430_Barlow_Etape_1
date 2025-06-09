@@ -7,6 +7,7 @@ from views import menu_view
 
 
 def menu_principal():
+    """Affiche le menu principal"""
     while True:
         menu_view.afficher_choix()
         menu_view.afficher_recherche()

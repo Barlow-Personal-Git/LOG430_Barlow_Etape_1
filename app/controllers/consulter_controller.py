@@ -5,6 +5,7 @@ from views import consulter_view
 
 
 def consulter_liste_produit():
+    """Consulter la liste des produits"""
     inventaires = session.query(Inventaire).join(Inventaire.produit).all()
 
     consulter_view.afficher_titre()

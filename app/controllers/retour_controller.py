@@ -8,6 +8,7 @@ client_session = ClientSession()
 
 
 def menu_retour():
+    """Affiche le menu de retour vente"""
     while True:
         retour_view.afficher_choix()
         retour_view.afficher_retour()
@@ -24,6 +25,7 @@ def menu_retour():
 
 
 def retourner_transaction():
+    """Retourne la vente selon l'id"""
     retour_view.afficher_vente_retour()
     transaction_id = retour_view.demander_vente_id()
 
@@ -56,6 +58,7 @@ def retourner_transaction():
 
 
 def consulter_vente():
+    """Affiche la liste de vente du client"""
     client = client_session.get_client()
     transactions = session.query(Transaction).filter_by(
         id_client=client.id_client

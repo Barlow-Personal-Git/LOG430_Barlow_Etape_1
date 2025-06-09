@@ -7,6 +7,7 @@ from app.client_session import ClientSession
 
 
 def login():
+    """Connecter à un compte"""
     login_view.afficher_bienvenue_magasin()
     while True:
         nom = login_view.demander_nom()
