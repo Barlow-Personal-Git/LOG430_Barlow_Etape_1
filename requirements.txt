@@ -1,3 +1,5 @@
+pylint
+pytest
 greenlet==3.2.2
 psycopg2-binary==2.9.10
 SQLAlchemy==2.0.41
