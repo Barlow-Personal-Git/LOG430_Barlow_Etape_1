@@ -52,7 +52,7 @@ def menu_recherche_id(recherche):
     while True:
         recherche_view.afficher_recherche_choix(recherche)
         produit = recherche_view.demander_recherche_choix(recherche)
-        if str(produit.lower()) == "back":
+        if str(produit).lower() == "back":
             break
 
         if produit:
