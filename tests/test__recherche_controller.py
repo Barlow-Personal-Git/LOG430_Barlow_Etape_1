@@ -1,4 +1,5 @@
 """"Test recherche produit"""
+from unittest.mock import patch
 from app.models import Produit, Inventaire
 from app.controllers.recherche_controller import (
     menu_recherche_categorie,
@@ -6,7 +7,6 @@ from app.controllers.recherche_controller import (
     menu_recherche_nom
 )
 from app.db import session
-from unittest.mock import patch
 
 
 def setup_function():
@@ -52,9 +52,9 @@ def test_recherche_par_categorie():
 
 def test_recherche_par_id():
     """"Test une recherche par id"""
-    id = 1
+    id_ = 1
     with patch(
-            "views.recherche_view.demander_recherche_choix", side_effect=[id, "back"]), \
+            "views.recherche_view.demander_recherche_choix", side_effect=[id_, "back"]), \
             patch("views.recherche_view.afficher_produits") as mock_afficher_produits:
         menu_recherche_id("id")
 

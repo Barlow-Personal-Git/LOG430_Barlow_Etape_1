@@ -1,4 +1,5 @@
 """"Test retour controller"""
+from unittest.mock import patch
 from app.models import (
     Produit,
     Inventaire,
@@ -13,7 +14,6 @@ from app.controllers.achat_controller import (
     confirmer_vente,
 )
 from app.db import session
-from unittest.mock import patch
 
 
 def setup_function():

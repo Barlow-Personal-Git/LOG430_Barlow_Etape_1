@@ -1,8 +1,8 @@
 """"Test consulter vente"""
+from unittest.mock import patch
 from app.models import Produit, Inventaire
 from app.controllers.consulter_controller import consulter_liste_produit
 from app.db import session
-from unittest.mock import patch
 
 
 def setup_function():
