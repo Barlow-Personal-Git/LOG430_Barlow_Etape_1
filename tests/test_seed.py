@@ -13,5 +13,5 @@ def test_seed_produit():
 def test_seed_inventaire():
     """Vérifie qu'un inventaire attendu existe"""
     run_all()
-    result = session.query(Inventaire).filter_by(id_produit="1").first()
+    result = session.query(Inventaire).filter_by(id_produit=1).first()
     assert result is not None
