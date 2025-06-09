@@ -19,7 +19,10 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: pip install pylint
+        run: |
+        pip install pylint
+        pip install -r requirements.txt
+        
       - name: Lint with pylint
         run: |
           find . -name "*.py" | xargs pylint

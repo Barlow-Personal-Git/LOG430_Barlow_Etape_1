@@ -1,8 +1,10 @@
+"""Inventaire model""" 
 from sqlalchemy import Column, ForeignKey, Integer, String, Float
 from sqlalchemy.orm import relationship
 from .base import Base
 
 class Inventaire(Base):
+    """"Illustre la tableau inventaire"""
     __tablename__ = 'inventaires'
 
     id_inventaire = Column(Integer, primary_key=True)
