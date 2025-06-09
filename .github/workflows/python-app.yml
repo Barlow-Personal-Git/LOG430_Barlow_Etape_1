@@ -20,8 +20,8 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: |
-        pip install pylint
-        pip install -r requirements.txt
+          pip install pylint
+          pip install -r requirements.txt
         
       - name: Lint with pylint
         run: |
