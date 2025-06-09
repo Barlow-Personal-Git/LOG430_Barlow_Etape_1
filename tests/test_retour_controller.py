@@ -11,7 +11,7 @@ from app.controllers.achat_controller import (
 from app.db import session
 
 
-def test_retour_transaction(setup_db):
+def test_retour_transaction(setup_db):  # pylint: disable=unused-argument
     """"Test une retour transaction"""
     confirmer_vente()
     client = client_session.get_client()

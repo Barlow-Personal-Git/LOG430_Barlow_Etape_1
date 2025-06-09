@@ -7,7 +7,7 @@ from app.controllers.recherche_controller import (
 )
 
 
-def test_recherche_par_categorie(setup_db):
+def test_recherche_par_categorie(setup_db):  # pylint: disable=unused-argument
     """"Test une recherche par catégorie"""
     categorie = "Breuvage"
     with patch(
@@ -19,7 +19,7 @@ def test_recherche_par_categorie(setup_db):
     assert mock_afficher_produits.call_count == 2
 
 
-def test_recherche_par_id(setup_db):
+def test_recherche_par_id(setup_db):  # pylint: disable=unused-argument
     """"Test une recherche par id"""
     id_ = 1
     with patch(
@@ -31,7 +31,7 @@ def test_recherche_par_id(setup_db):
     assert mock_afficher_produits.call_count == 1
 
 
-def test_recherche_par_nom(setup_db):
+def test_recherche_par_nom(setup_db):  # pylint: disable=unused-argument
     """"Test une recherche par id"""
     nom = "Eau"
     with patch(

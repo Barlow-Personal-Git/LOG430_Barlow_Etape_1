@@ -3,7 +3,7 @@ from unittest.mock import patch
 from app.controllers.consulter_controller import consulter_liste_produit
 
 
-def test_consulter_liste_produit(setup_db):
+def test_consulter_liste_produit(setup_db):  # pylint: disable=unused-argument
     """"Test une consulter la liste des ventes"""
     consulter_liste_produit()
     with patch("views.consulter_view.afficher_inventaire") as mock_afficher_inventaire:
