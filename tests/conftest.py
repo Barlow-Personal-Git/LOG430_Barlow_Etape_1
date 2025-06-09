@@ -1,10 +1,12 @@
 """"Partage setup"""
+import pytest
 from app.models import Produit, Inventaire, Client, Transaction
 from app.db import session
 from app.client_session import ClientSession
 
 
-def setup_function():
+@pytest.fixture(autouse=True)
+def setup_db():
     """"Réinitialise la base de donnée pour chaque test"""
     session.query(Transaction).delete()
     session.query(Inventaire).delete()
