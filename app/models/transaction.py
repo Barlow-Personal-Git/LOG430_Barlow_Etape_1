@@ -13,7 +13,7 @@ class Transaction(Base):
 
     produits = relationship(
         "TransactionProduit", 
-        back_populates="transaction", 
+        back_populates="transaction",
         cascade="all, delete-orphan"
     )
     client = relationship("Client", back_populates="transactions")

@@ -25,7 +25,7 @@ jobs:
         
       - name: Lint with pylint
         run: |
-          find . -name "*.py" | xargs pylint
+          find . -name "*.py" | xargs pylint --rcfile=.pylintrc
 
   test:
     runs-on: ubuntu-latest
