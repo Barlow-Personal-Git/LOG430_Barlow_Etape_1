@@ -1,13 +1,16 @@
 """"Partage setup"""
 import pytest
-from app.models import Produit, Inventaire, Client, Transaction
-from app.db import session
+from app.models import Base, Produit, Inventaire, Client, Transaction
+from app.db import engine, session
 from app.client_session import ClientSession
 
 
 @pytest.fixture(autouse=True)
 def setup_db():
     """"Réinitialise la base de donnée pour chaque test"""
+
+    Base.metadata.create_all(engine)
+
     session.query(Transaction).delete()
     session.query(Inventaire).delete()
     session.query(Produit).delete()
