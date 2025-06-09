@@ -1,26 +1,35 @@
 """Instance Client""" 
 class ClientSession:
-    """variables"""
+    """Classe Singleton"""
     _instance = None
 
     def __new__(cls):
         if cls._instance is None :
             cls._instance = super(ClientSession, cls).__new__(cls)
-            cls._instance.client = None
-            cls._instance.produit_ventes = {}
-            cls._instance.total = 0
+            cls._instance._initialize()
         return cls._instance
+    
+    def _initialize(self):
+        """Initialise les attributs de la session client"""
+        self.client = None
+        self.produit_ventes = {}
+        self.total = 0
 
-    """Set client"""
     def set_client(self, client):
+        """Définit le client"""
         self.client = client
 
-    """Get client"""
     def get_client(self):
+        """Retourne le client"""
         return self.client
 
-    """Ajouter produit"""
     def add_produit(self, produit, nbr):
+        """Ajoute un produit au panier
+        
+        Agrs :
+            produit: Objet produit
+            nbr: Quantité du produit
+        """
         if produit.id_produit in self.produit_ventes:
             self.produit_ventes[produit.id_produit]['nbr'] += nbr
         else:
@@ -29,10 +38,10 @@ class ClientSession:
                 'nbr' : nbr
             }
 
-    """Get produits"""
     def get_produits(self):
+        """Retourne la liste des produits"""
         return list(self.produit_ventes.values())
 
-    """Vider vente"""
     def clear_vente(self):
+        """Vide le panier"""
         self.produit_ventes = {}
