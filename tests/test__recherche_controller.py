@@ -38,37 +38,26 @@ def setup_function():
     session.commit()
 
 
+def run_test_recherche(value, func, expected_call_count, recherche):
+    """Exécution du test de recherche"""
+    with patch(
+        "views.recherche_view.demander_recherche_choix",
+        side_effect=[value, "back"]
+    ), patch("views.recherche_view.afficher_produits") as mock_afficher_produits:
+        func(recherche)
+    assert mock_afficher_produits.call_count == expected_call_count
+
+
 def test_recherche_par_categorie():
     """"Test une recherche par catégorie"""
-    categorie = "Breuvage"
-    with patch(
-            "views.recherche_view.demander_recherche_choix", side_effect=[categorie, "back"]), \
-            patch("views.recherche_view.afficher_produits") as mock_afficher_produits:
-        menu_recherche_categorie("categorie")
-
-    # Vérifie que la console a été appelé deux fois
-    assert mock_afficher_produits.call_count == 2
+    run_test_recherche("Breuvage", menu_recherche_categorie, 2, "categorie")
 
 
 def test_recherche_par_id():
     """"Test une recherche par id"""
-    id_ = 1
-    with patch(
-            "views.recherche_view.demander_recherche_choix", side_effect=[id_, "back"]), \
-            patch("views.recherche_view.afficher_produits") as mock_afficher_produits:
-        menu_recherche_id("id")
-
-    # Vérifie que la console a été appelé un fois
-    assert mock_afficher_produits.call_count == 1
+    run_test_recherche(1, menu_recherche_id, 1, "id")
 
 
 def test_recherche_par_nom():
     """"Test une recherche par nom"""
-    nom = "Eau"
-    with patch(
-            "views.recherche_view.demander_recherche_choix", side_effect=[nom, "back"]), \
-            patch("views.recherche_view.afficher_produits") as mock_afficher_produits:
-        menu_recherche_nom("nom")
-
-    # Vérifie que la console a été appelé un fois
-    assert mock_afficher_produits.call_count == 1
+    run_test_recherche("Eau", menu_recherche_nom, 1, "nom")
