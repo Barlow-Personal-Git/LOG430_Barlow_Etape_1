@@ -1,12 +1,17 @@
 """Connecter à la session DB"""
+from dotenv import load_dotenv
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from .models import Base
 
-engine = create_engine(
-    'postgresql://log430:laboratoirelog430@localhost:5432/log430_lab',
-    echo=False
-)
+# Charger la variable d'environnement .ev
+load_dotenv()
+
+# Variable d'environnement
+DATABASE_URL = os.getenv('DATABASE_URL')
+
+engine = create_engine(DATABASE_URL, echo=False)
 
 Session = sessionmaker(bind=engine)
 session = Session()
