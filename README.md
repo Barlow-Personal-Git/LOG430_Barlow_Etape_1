@@ -27,18 +27,31 @@ pip install -r requirements.txt
 ```
 
 4. Configurer PostgreSQL
-Créer une base de donnée PostgreSQL et configurez les paramètres de connexion dans app/db.py
+Créer une base de donnée PostgreSQL
 ```
 psql -U postgres
 CREATE DATABASE log430_lab;
 ```
 
-1. Seed de la base de données
+5. Configurer les variables d'environnement
+Copier le fichier d'exemple et renommez-le :
+```
+cp .env-example .env
+```
+Ensuite, ouvrez le fichier `.env` et modifiez la variable `DATABASE_URL` :
+- Remplacez `user` par le nom de votre utilisateur
+- Remplacez `password` par le mot de passe de cet utilisateur
+- Remplez `table` par le nom de votre base de données (ex.: log430_lab)
+
+6. Seed de la base de données
 ```
 python3 seed/run_seed.py 
 ```
 
+## Exécution
 1. Exécuter le programme
 ```
 python3 app.py
 ```
+
+
