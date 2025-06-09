@@ -87,7 +87,7 @@ def consulter_produit():
             break
 
 def restart_vente():
-    client_session.clear_ventes()
+    client_session.clear_vente()
 
 def confirmer_vente():
     client = client_session.get_client()
@@ -124,5 +124,5 @@ def confirmer_vente():
     transaction.total = total_transaction
     session.commit()
     
-    client_session.clear_ventes()
+    client_session.clear_vente()
     achat_view.afficher_vente_confirmer()
