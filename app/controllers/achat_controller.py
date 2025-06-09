@@ -33,7 +33,7 @@ def ajouter_produit():
         if produit_id.lower() == "back":
             break
 
-        elif produit_id:
+        if produit_id:
             resultat = session.query(Produit).get(int(produit_id))
             nbr = int(achat_view.demande_quantite())
 
