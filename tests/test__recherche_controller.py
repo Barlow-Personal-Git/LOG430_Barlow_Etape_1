@@ -37,7 +37,7 @@ def test_recherche_par_nom():
     with patch(
             "views.recherche_view.demander_recherche_choix", side_effect=[nom, "back"]), \
             patch("views.recherche_view.afficher_produits") as mock_afficher_produits:
-        menu_recherche_id("nom")
+        menu_recherche_nom("nom")
 
     # Vérifie que la console a été appelé une fois
     assert mock_afficher_produits.call_count == 1
