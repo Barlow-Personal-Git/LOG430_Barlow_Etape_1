@@ -1,3 +1,4 @@
+# pylint: disable=R0801
 """"Test recherche produit"""
 from unittest.mock import patch
 from app.models import Produit, Inventaire
