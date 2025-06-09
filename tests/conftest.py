@@ -1,6 +1,6 @@
 """"Partage setup"""
 import pytest
-from app.models import Base, Produit, Inventaire, Client, Transaction
+from app.models import Base, Produit, Inventaire, Client
 from app.db import engine, session
 from app.client_session import ClientSession
 
