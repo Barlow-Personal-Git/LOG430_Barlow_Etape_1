@@ -2,9 +2,7 @@
 from unittest.mock import patch
 from app.models import Produit, Inventaire
 from app.controllers.recherche_controller import (
-    menu_recherche_categorie,
-    menu_recherche_id,
-    menu_recherche_nom
+    menu_recherche_categorie
 )
 from app.db import session
 
@@ -16,25 +14,17 @@ def setup_function():
     session.commit()
 
     # Ajouter un produit
-    produit = Produit(nom="Eau", prix=1.00)
-    session.add(produit)
-    produit2 = Produit(nom="Cafe", prix=2.00)
-    session.add(produit2)
+    produit_recherche = Produit(nom="Chocolat", prix=1.00)
+    session.add(produit_recherche)
     session.flush()
 
     # Ajouter un inventaire
-    inventaire = Inventaire(
-        id_produit=produit.id_produit,
-        category="Breuvage",
+    inventaire_recherche = Inventaire(
+        id_produit=produit_recherche.id_produit,
+        category="Dessert",
         nbr=30
     )
-    inventaire2 = Inventaire(
-        id_produit=produit2.id_produit,
-        category="Breuvage",
-        nbr=40
-    )
-    session.add(inventaire)
-    session.add(inventaire2)
+    session.add(inventaire_recherche)
     session.commit()
 
 
