@@ -2,9 +2,9 @@
 from .db import session
 from .models import Produit, Inventaire, Client, Transaction
 from .controllers import (
-    login_controller, 
-    recherche_controller, 
-    achat_controller, 
+    login_controller,
+    recherche_controller,
+    achat_controller,
     consulter_controller,
     retour_controller
 )
