@@ -53,4 +53,4 @@ def afficher_vente_confirmer():
     print("Vente confirmer")
 
 def afficher_produit_ajouter(produit, nbr):
-    print(f"Ajouter au panier : {produit.nom} x{nbr}")
+    print(f"Ajouter au panier :  {produit.nom} x{nbr}")

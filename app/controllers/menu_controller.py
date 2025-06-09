@@ -1,7 +1,7 @@
 from .recherche_controller import menu_recherche
 from .achat_controller import menu_achat
-# from .consulter_controller import menu_consulter
-# from .retour_controller import menu_retour
+from .consulter_controller import consulter_liste_produit
+from .retour_controller import menu_retour
 from views import menu_view
 
 def menu_principal():
@@ -20,9 +20,8 @@ def menu_principal():
         if choix == "2" :
             menu_achat()
         if choix == "3" :
-            print("3")
+            menu_retour()
         if choix == "4" :
-            print("4")
-            break
+            consulter_liste_produit()
         if choix == "5" :
             break

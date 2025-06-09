@@ -9,5 +9,5 @@ class Transaction(Base):
     id_client = Column(Integer, ForeignKey('clients.id_client'), nullable= False)
     total = Column(Float)
 
-    produits = relationship("TransactionProduit", back_populates="transaction")
+    produits = relationship("TransactionProduit", back_populates="transaction", cascade="all, delete-orphan")
     client = relationship("Client", back_populates="transactions")

@@ -43,7 +43,7 @@ def afficher_titre_produit():
     print("Produit :")
 
 def afficher_produits(p):
-    print(f"- {p.id_produit}  {p.nom} ({p.prix} $)")
+    print(f"- ID : {p.id_produit} | Nom : {p.nom} | Prix : ({p.prix} $)")
 
 def afficher_indisponible():
     print("Aucun produit trouvé")
