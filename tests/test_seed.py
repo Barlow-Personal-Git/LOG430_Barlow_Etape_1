@@ -6,7 +6,7 @@ from seed import run_all
 def test_seed_produit():
     """Vérifie qu'un produit attendu existe"""
     run_all()
-    result = session.query(Produit).filter_by(name="Eau").first()
+    result = session.query(Produit).filter_by(nom="Eau").first()
     assert result is not None
 
 
