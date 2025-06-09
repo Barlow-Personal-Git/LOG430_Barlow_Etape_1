@@ -8,7 +8,7 @@ from app.controllers.achat_controller import (
 from app.db import session
 
 
-def test_confirmer_vente():
+def test_confirmer_vente(setup_db):
     """"Test une vente confirmée"""
     confirmer_vente()
     transactions = session.query(Transaction).all()
@@ -16,7 +16,7 @@ def test_confirmer_vente():
     assert transactions[0].total == 2.0
 
 
-def test_recommencer_vente():
+def test_recommencer_vente(setup_db):
     """"Test une recommencer une vente"""
     restart_vente()
     produits = client_session.get_produits()

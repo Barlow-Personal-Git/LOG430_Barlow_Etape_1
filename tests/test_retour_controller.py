@@ -11,7 +11,7 @@ from app.controllers.achat_controller import (
 from app.db import session
 
 
-def test_retour_transaction():
+def test_retour_transaction(setup_db):
     """"Test une retour transaction"""
     confirmer_vente()
     client = client_session.get_client()

@@ -6,7 +6,7 @@ from app.db import engine, session
 from app.client_session import ClientSession
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture
 def setup_db():
     """"Réinitialise la base de donnée pour chaque test"""
 
