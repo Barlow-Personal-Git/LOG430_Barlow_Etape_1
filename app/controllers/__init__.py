@@ -7,6 +7,16 @@ from .recherche_controller import (
 )
 from .login_controller import login
 from .menu_controller import menu_principal
-from .achat_controller import menu_achat
-from .retour_controller import menu_retour
+from .achat_controller import (
+    menu_achat,
+    ajouter_produit,
+    consulter_produit,
+    restart_vente,
+    confirmer_vente
+)
+from .retour_controller import (
+    menu_retour,
+    retourner_transaction,
+    consulter_vente
+)
 from .consulter_controller import consulter_liste_produit
