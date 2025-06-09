@@ -1,16 +1,19 @@
-""""Test achat controller"""
+""""Test retour controller"""
 from app.models import (
     Produit,
     Inventaire,
     Client,
     Transaction
 )
-from app.controllers.achat_controller import (
-    confirmer_vente,
-    restart_vente,
+from app.controllers.retour_controller import (
+    retourner_transaction,
     client_session
 )
+from app.controllers.achat_controller import (
+    confirmer_vente,
+)
 from app.db import session
+from unittest.mock import patch
 
 
 def setup_function():
@@ -44,17 +47,22 @@ def setup_function():
     client_session.clear_vente()
     client_session.add_produit(produit, 2)
 
-
-def test_confirmer_vente():
-    """"Test une vente confirmée"""
+    # Ajouter une vente
     confirmer_vente()
-    transactions = session.query(Transaction).all()
-    assert len(transactions) == 1
-    assert transactions[0].total == 2.0
 
 
-def test_recommencer_vente():
-    """"Test une recommencer une vente"""
-    restart_vente()
-    produits = client_session.get_produits()
-    assert len(produits) == 0
+def test_retour_transaction():
+    """"Test une retour transaction"""
+    client = client_session.get_client()
+    transaction = (
+        session.query(Transaction)
+        .filter_by(id_client=client.id_client)
+        .first()
+    )
+    with patch(
+        "views.retour_view.demander_vente_id",
+        return_value=str(transaction.id_transaction)
+    ):
+        retourner_transaction()
+
+    assert session.query(Transaction).get(transaction.id_transaction) is None
