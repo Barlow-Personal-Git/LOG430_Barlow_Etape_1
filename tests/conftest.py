@@ -1,5 +1,6 @@
 """"Partage setup"""
 import pytest
+from sqlalchemy import text
 from app.models import Base, Produit, Inventaire, Client
 from app.db import engine, session
 from app.client_session import ClientSession
@@ -12,11 +13,11 @@ def setup_db():
     Base.metadata.create_all(engine)
 
     try:
-        session.execute("DELETE FROM transaction_produits")
-        session.execute("DELETE FROM transactions")
-        session.execute("DELETE FROM inventaires")
-        session.execute("DELETE FROM produits")
-        session.execute("DELETE FROM clients")
+        session.execute(text("DELETE FROM transaction_produits"))
+        session.execute(text("DELETE FROM transactions"))
+        session.execute(text("DELETE FROM inventaires"))
+        session.execute(text("DELETE FROM produits"))
+        session.execute(text("DELETE FROM clients"))
         session.commit()
     except Exception as e:
         session.rollback()
