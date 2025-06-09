@@ -11,11 +11,16 @@ def setup_db():
 
     Base.metadata.create_all(engine)
 
-    session.query(Transaction).delete()
-    session.query(Inventaire).delete()
-    session.query(Produit).delete()
-    session.query(Client).delete()
-    session.commit()
+    try:
+        session.execute("DELETE FROM transaction_produits")
+        session.execute("DELETE FROM transactions")
+        session.execute("DELETE FROM inventaires")
+        session.execute("DELETE FROM produits")
+        session.execute("DELETE FROM clients")
+        session.commit()
+    except Exception as e:
+        session.rollback()
+        raise RuntimeError("Erreur de nettoyage") from e
 
     # Ajouter un produit
     produit = Produit(nom="Eau", prix=1.00)
