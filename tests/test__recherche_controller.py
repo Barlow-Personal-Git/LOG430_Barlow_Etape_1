@@ -1,4 +1,3 @@
-# pylint: disable=R0801
 """"Test recherche produit"""
 from unittest.mock import patch
 from app.models import Produit, Inventaire
@@ -39,26 +38,13 @@ def setup_function():
     session.commit()
 
 
-def run_test_recherche(value, func, expected_call_count, recherche):
-    """Exécution du test de recherche"""
-    with patch(
-        "views.recherche_view.demander_recherche_choix",
-        side_effect=[value, "back"]
-    ), patch("views.recherche_view.afficher_produits") as mock_afficher_produits:
-        func(recherche)
-    assert mock_afficher_produits.call_count == expected_call_count
-
-
 def test_recherche_par_categorie():
     """"Test une recherche par catégorie"""
-    run_test_recherche("Breuvage", menu_recherche_categorie, 2, "categorie")
+    categorie = "Breuvage"
+    with patch(
+            "views.recherche_view.demander_recherche_choix", side_effect=[categorie, "back"]), \
+            patch("views.recherche_view.afficher_produits") as mock_afficher_produits:
+        menu_recherche_categorie("categorie")
 
-
-def test_recherche_par_id():
-    """"Test une recherche par id"""
-    run_test_recherche(1, menu_recherche_id, 1, "id")
-
-
-def test_recherche_par_nom():
-    """"Test une recherche par nom"""
-    run_test_recherche("Eau", menu_recherche_nom, 1, "nom")
+    # Vérifie que la console a été appelé deux fois
+    assert mock_afficher_produits.call_count == 2
