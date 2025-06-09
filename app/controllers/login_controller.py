@@ -1,15 +1,16 @@
-"""Connecter Controllers""" 
+"""Connecter Controllers"""
 from app.db import session
 from app.models import Client
 from views import login_view
 from .menu_controller import menu_principal
 from app.client_session import ClientSession
 
+
 def login():
     login_view.afficher_bienvenue_magasin()
     while True:
         nom = login_view.demander_nom()
-        
+
         if not nom:
             login_view.afficher_nom_invalide()
             continue

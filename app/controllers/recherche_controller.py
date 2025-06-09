@@ -1,9 +1,10 @@
-"""Recherche menu Controllers""" 
+"""Recherche menu Controllers"""
 from app.db import session
 from app.models import Produit, Inventaire
 from views import recherche_view
 
-def menu_recherche() : 
+
+def menu_recherche():
     while True:
         recherche_view.afficher_choix()
         recherche_view.afficher_identifiant()
@@ -12,17 +13,18 @@ def menu_recherche() :
         recherche_view.afficher_quitter()
         choix = recherche_view.demander_choix()
 
-        if choix == "1" :
+        if choix == "1":
             menu_recherche_id("id")
-        if choix == "2" :
+        if choix == "2":
             menu_recherche_nom("nom")
-        if choix == "3" :
+        if choix == "3":
             menu_recherche_categorie("categorie")
-        if choix == "4" :
+        if choix == "4":
             break
 
-def menu_recherche_nom(recherche) : 
-    while True :
+
+def menu_recherche_nom(recherche):
+    while True:
         recherche_view.afficher_recherche_choix(recherche)
         produit = recherche_view.demander_recherche_choix(recherche)
         if produit.lower() == "back":
@@ -33,17 +35,18 @@ def menu_recherche_nom(recherche) :
                 Produit.nom.ilike(f"%{produit}%")
             ).all()
 
-            if produits :
+            if produits:
                 recherche_view.afficher_titre_liste()
                 for p in produits:
                     recherche_view.afficher_produits(p)
-            else :
+            else:
                 print("Aucun produit trouvé")
-        else :
+        else:
             print("Veuillez reessayer de nouveau!")
 
-def menu_recherche_id(recherche) : 
-    while True :
+
+def menu_recherche_id(recherche):
+    while True:
         recherche_view.afficher_recherche_choix(recherche)
         produit = recherche_view.demander_recherche_choix(recherche)
         if produit.lower() == "back":
@@ -52,19 +55,20 @@ def menu_recherche_id(recherche) :
         elif produit:
             resultat = session.query(Produit).get(int(produit))
 
-            if resultat :
+            if resultat:
                 recherche_view.afficher_titre_produit()
                 recherche_view.afficher_produits(resultat)
-            else :
+            else:
                 recherche_view.afficher_indisponible()
-        else :
+        else:
             recherche_view.afficher_erreur()
 
-def menu_recherche_categorie(recherche) : 
-    while True :
+
+def menu_recherche_categorie(recherche):
+    while True:
         recherche_view.afficher_recherche_choix(recherche)
         categorie = recherche_view.demander_recherche_choix(recherche)
-        
+
         if categorie.lower() == "back":
             break
 
@@ -73,12 +77,12 @@ def menu_recherche_categorie(recherche) :
                 Inventaire.category == categorie
             ).all()
 
-            if inventaires :
+            if inventaires:
                 recherche_view.afficher_titre_liste()
                 for inventaire in inventaires:
                     produit = inventaire.produit
                     recherche_view.afficher_produits(produit)
-            else :
+            else:
                 recherche_view.afficher_indisponible()
-        else :
+        else:
             recherche_view.afficher_erreur()

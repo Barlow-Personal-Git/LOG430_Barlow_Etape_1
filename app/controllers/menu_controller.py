@@ -1,9 +1,10 @@
-"""Menu principal Controllers""" 
+"""Menu principal Controllers"""
 from .recherche_controller import menu_recherche
 from .achat_controller import menu_achat
 from .consulter_controller import consulter_liste_produit
 from .retour_controller import menu_retour
 from views import menu_view
+
 
 def menu_principal():
     while True:
@@ -16,13 +17,13 @@ def menu_principal():
 
         choix = menu_view.demander_choix()
 
-        if choix == "1" :
+        if choix == "1":
             menu_recherche()
-        if choix == "2" :
+        if choix == "2":
             menu_achat()
-        if choix == "3" :
+        if choix == "3":
             menu_retour()
-        if choix == "4" :
+        if choix == "4":
             consulter_liste_produit()
-        if choix == "5" :
+        if choix == "5":
             break
