@@ -1,8 +1,8 @@
 """Achat Controllers"""
+from app.client_session import ClientSession
 from app.db import session
 from app.models import Produit, Inventaire, Transaction, TransactionProduit
 from views import achat_view
-from app.client_session import ClientSession
 
 client_session = ClientSession()
 
@@ -86,10 +86,10 @@ def consulter_produit():
         if choix == "1":
             confirmer_vente()
             break
-        elif choix == "2":
+        if choix == "2":
             restart_vente()
             break
-        elif choix == "3":
+        if choix == "3":
             break
 
 

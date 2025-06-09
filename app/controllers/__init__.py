@@ -1,5 +1,10 @@
 """Init Controllers"""
-from .recherche_controller import menu_recherche, menu_recherche_nom, menu_recherche_id, menu_recherche_categorie
+from .recherche_controller import (
+    menu_recherche,
+    menu_recherche_nom,
+    menu_recherche_id,
+    menu_recherche_categorie
+)
 from .login_controller import login
 from .menu_controller import menu_principal
 from .achat_controller import menu_achat

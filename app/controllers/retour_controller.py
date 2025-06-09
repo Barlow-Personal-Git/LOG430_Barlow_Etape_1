@@ -1,8 +1,8 @@
 """Retour vente Controllers"""
+from app.client_session import ClientSession
 from app.db import session
 from app.models import Inventaire, Transaction
 from views import retour_view
-from app.client_session import ClientSession
 
 client_session = ClientSession()
 

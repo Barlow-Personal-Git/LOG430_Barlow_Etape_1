@@ -1,9 +1,9 @@
 """Menu principal Controllers"""
+from views import menu_view
 from .recherche_controller import menu_recherche
 from .achat_controller import menu_achat
 from .consulter_controller import consulter_liste_produit
 from .retour_controller import menu_retour
-from views import menu_view
 
 
 def menu_principal():

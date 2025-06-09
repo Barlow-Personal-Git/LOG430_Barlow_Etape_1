@@ -32,7 +32,7 @@ def menu_recherche_nom(recherche):
         if produit.lower() == "back":
             break
 
-        elif produit:
+        if produit:
             produits = session.query(Produit).filter(
                 Produit.nom.ilike(f"%{produit}%")
             ).all()
@@ -55,7 +55,7 @@ def menu_recherche_id(recherche):
         if produit.lower() == "back":
             break
 
-        elif produit:
+        if produit:
             resultat = session.query(Produit).get(int(produit))
 
             if resultat:
@@ -76,7 +76,7 @@ def menu_recherche_categorie(recherche):
         if categorie.lower() == "back":
             break
 
-        elif categorie:
+        if categorie:
             inventaires = session.query(Inventaire).filter(
                 Inventaire.category == categorie
             ).all()
