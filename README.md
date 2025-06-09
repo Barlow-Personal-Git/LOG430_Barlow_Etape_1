@@ -45,7 +45,7 @@ Ensuite, ouvrez le fichier `.env` et modifiez la variable `DATABASE_URL` :
 
 6. Seed de la base de données
 ```
-python3 seed/run_seed.py 
+python3 -m seed.run_seed
 ```
 
 ## Exécution

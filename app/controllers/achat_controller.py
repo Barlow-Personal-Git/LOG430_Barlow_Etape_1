@@ -1,9 +1,12 @@
 """Achat Controllers"""
+import os
+import requests
 from app.client_session import ClientSession
 from app.db import session
 from app.models import Produit, Inventaire, Transaction, TransactionProduit
 from views import achat_view
 
+MAGASIN = os.getenv("MAGASIN")
 client_session = ClientSession()
 
 
@@ -133,6 +136,32 @@ def confirmer_vente():
 
     transaction.total = total_transaction
     session.commit()
+    envoyer_requete_mere(transaction.id_transaction)
 
     client_session.clear_vente()
     achat_view.afficher_vente_confirmer()
+
+
+def envoyer_requete_mere(transaction_id):
+
+    url = "http://localhost:5000/transactions"
+    transaction = session.query(Transaction).get(transaction_id)
+    trans_prod = session.query(TransactionProduit).filter_by(
+        id_transaction=transaction_id).all()
+
+    data = {
+        "magasin": MAGASIN,
+        "total": transaction.total,
+        "produits": [
+            {
+                "id_produit": tp.id_produit,
+                "nbr": tp.nbr
+            }
+            for tp in trans_prod
+        ]
+    }
+
+    try:
+        requests.post(url, json=data)
+    except requests.RequestException as e:
+        print("Probleme connection avec la server mèere")

@@ -1,7 +1,8 @@
-"""Produit model""" 
-from sqlalchemy import Column, Integer, String, Float, func, DateTime
+"""Produit model"""
+from sqlalchemy import Column, Integer, String, Float, DateTime, func
 from sqlalchemy.orm import relationship
 from .base import Base
+
 
 class Produit(Base):
     """"Illustre la tableau produit"""
