@@ -1,5 +1,5 @@
 """Seed Produit"""
-from app import session, session, Produit
+from app import session, Produit
 
 
 def seed_produits():
