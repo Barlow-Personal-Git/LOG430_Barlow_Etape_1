@@ -56,4 +56,4 @@ def envoyer_inventaire_vers_mere():
         requests.post("http://localhost:5000/inventaires",
                       json=data, timeout=10)
     except Exception as e:
-        print("Erreur de synchroniser", e)
+        print(f"Erreur lors de la requête de synchroniser : {e}")

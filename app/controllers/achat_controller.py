@@ -164,4 +164,4 @@ def envoyer_requete_mere(transaction_id):
     try:
         requests.post(url, json=data, timeout=5)
     except requests.RequestException as e:
-        print("Erreur lors de la requête : {e}")
+        print(f"Erreur lors de la requête : {e}")
