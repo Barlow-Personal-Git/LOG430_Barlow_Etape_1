@@ -51,7 +51,10 @@ def generer_rapport_pdf():
     produit_ventes = session.query(
         Produit.nom,
         func.sum(TransactionProduit.nbr)
-    ).join(TransactionProduit).group_by(Produit.nom).order_by(func.sum(TransactionProduit.nbr).desc()).limit(5).all()
+    ).join(TransactionProduit)\
+        .group_by(Produit.nom)\
+        .order_by(func.sum(TransactionProduit.nbr).desc())\
+        .limit(5).all()
 
     pdf.add_table_model(produit_ventes, [80, 40])
     pdf.ln(10)
