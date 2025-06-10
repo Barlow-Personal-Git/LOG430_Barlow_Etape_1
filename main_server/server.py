@@ -1,20 +1,23 @@
+""""Serveur Flask pour la gestion du serveur mère"""
+from datetime import datetime, timedelta
 from flask import Flask, jsonify, request, send_file
+from sqlalchemy import func
 from .db import session
 from .models import Inventaire, MessageAlerte, Magasin, Transaction, TransactionProduit, Produit
 from .rapport import generer_rapport_pdf
-from sqlalchemy import func, extract
-from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def home():
+    """"Page d'accueil du serveur"""
     return "Magasin LOG430 Server"
 
 
 @app.route('/inventaires', methods=['POST'])
 def synchroniser_inventaire():
+    """Gestion de synchroniser inventaire"""
     data = request.get_json()
     magasin_nom = data.get('magasin')
     inventaires = data.get('inventaire', [])
@@ -39,6 +42,7 @@ def synchroniser_inventaire():
 
 @app.route('/message_alerte', methods=['POST'])
 def ajouter_alerte():
+    """"Ajouter un message de réapprovisionnement"""
     data = request.get_json()
     id_produit = data.get("id_produit")
     magasin = data.get("magasin")
@@ -60,6 +64,7 @@ def ajouter_alerte():
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
+    """Visualiser un tableau de bord"""
     chiffre_affaires_par_magasin = (
         session.query(
             Magasin.nom,
@@ -114,6 +119,7 @@ def dashboard():
 
 @app.route('/rapport', methods=['GET'])
 def telecharger_rapport():
+    """Générer un rapport pdf"""
     fichier_pdf = generer_rapport_pdf()
     return send_file(
         fichier_pdf,
@@ -125,6 +131,7 @@ def telecharger_rapport():
 
 @app.route('/transactions', methods=['POST'])
 def ajouter_transaction():
+    """Ajouter la transaction dans la BD mère"""
     data = request.get_json()
     magasin_nom = data.get("magasin")
     total = data.get("total")
@@ -134,7 +141,7 @@ def ajouter_transaction():
     transaction = Transaction(id_magasin=magasin.id_magasin, total=total)
     session.add(transaction)
     session.flush()
-    
+
     total_transaction = 0
 
     for item in produits:
