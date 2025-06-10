@@ -143,7 +143,7 @@ def confirmer_vente():
 
 
 def envoyer_requete_mere(transaction_id):
-
+    """Synchroniser avec la base de donnée mère"""
     url = "http://localhost:5000/transactions"
     transaction = session.query(Transaction).get(transaction_id)
     trans_prod = session.query(TransactionProduit).filter_by(
@@ -162,6 +162,6 @@ def envoyer_requete_mere(transaction_id):
     }
 
     try:
-        requests.post(url, json=data)
+        requests.post(url, json=data, timeout=5)
     except requests.RequestException as e:
-        print("Probleme connection avec la server mère")
+        print("Erreur lors de la requête : {e}")

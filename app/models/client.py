@@ -13,7 +13,7 @@ class Client(Base):
     role = Column(String, default="user", nullable=False)
     created_at = Column(DateTime, default=func.now)
     updated_at = Column(DateTime, default=func.now, onupdate=func.now)
-    
+
     transactions = relationship("Transaction", back_populates="client")
 
     __table_args__ = (

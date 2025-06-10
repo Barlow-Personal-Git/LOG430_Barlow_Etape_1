@@ -25,7 +25,7 @@ def consulter_liste_produit():
         consulter_view.afficher_inventaire(produit, inventaire)
 
     client = client_session.get_client()
-    while True and client.role == "admin":
+    while client.role == "admin":
         print("Veuillez sélectionner un choix")
         print("1. Alerte un produit insuffisant")
         print("2. Quitter")
@@ -56,7 +56,8 @@ def envoye_approvisionnement():
                 "id_produit": produit_id,
                 "magasin": MAGASIN,
                 "message": texte_message
-            }
+            },
+            timeout=10
         )
 
         if response.status_code == 201:

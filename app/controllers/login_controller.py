@@ -34,11 +34,13 @@ def login():
         menu_principal()
         break
 
+
 def envoyer_inventaire_vers_mere():
+    """Mise à jour du inventaire mère"""
     magasin_nom = os.getenv("MAGASIN")
-    
+
     inventaires = session.query(Inventaire).all()
-    
+
     data = {
         "magasin": magasin_nom,
         "inventaire": [
@@ -49,9 +51,9 @@ def envoyer_inventaire_vers_mere():
             for inventaire in inventaires
         ]
     }
-    
+
     try:
-        requests.post("http://localhost:5000/inventaires", json=data)
+        requests.post("http://localhost:5000/inventaires",
+                      json=data, timeout=10)
     except Exception as e:
         print("Erreur de synchroniser", e)
-        
