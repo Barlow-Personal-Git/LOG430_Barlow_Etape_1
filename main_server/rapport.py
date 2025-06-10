@@ -59,7 +59,7 @@ def generer_rapport_pdf():
     pdf.add_table_model(produit_ventes, [80, 40])
     pdf.ln(10)
 
-    pdf.section_title("Stocks restants par produit")
+    pdf.section_title("Inventaires restants par produit")
     stocks = session.query(
         Produit.nom,
         func.sum(Inventaire.nbr)
