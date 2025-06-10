@@ -1,15 +1,13 @@
 @startuml
-skinparam componentStyle rectangle
-
-node "Console du magasin" {
-  
-  node "Client" {
-    component "Interface utilisateur"
-    component "ORM"
-  }
-
-  database "Data Source (SQLite)" as DB
+node "Magasin" as   Magasin {
+  artifact "Application Magasin\n(app.py)" as AppMagasin
 }
 
-"Client" --> DB
+node "Serveur Mère" as Server {
+  database "PostgreSQL Centrale" as PostgresCentral
+  artifact "server.py" as ApiServeur
+}
+
+Magasin --> ApiServeur : Requêtes HTTP/Synchronisation
+ApiServeur --> PostgresCentral : Accès base de données
 @enduml

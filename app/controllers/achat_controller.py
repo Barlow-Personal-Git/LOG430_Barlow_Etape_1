@@ -164,4 +164,4 @@ def envoyer_requete_mere(transaction_id):
     try:
         requests.post(url, json=data)
     except requests.RequestException as e:
-        print("Probleme connection avec la server mèere")
+        print("Probleme connection avec la server mère")

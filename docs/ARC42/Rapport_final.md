@@ -1,3 +1,5 @@
+Lien de mon repos : https://github.com/Barlow-Personal-Git/LOG430_Barlow_Etape_1
+
 # 1. Introduction et objectifs
 
 Ce projet est une application de gestion d'inventaire pour un réseau de magasins, dans le cadre du cours LOG430. Elle permet de consulter, acheter, retourner des produits et synchroniser les inventaires locaux avec un serveur mère. Ce laboratoire vise à familier les outils pour créer un projet de haut niveau.
@@ -52,6 +54,8 @@ Les fichiers sont organisés selon leur comportement ou rôle :
 - UC6 – Générer un rapport de ventes : Un gestionnaire peut générer un rapport détaillé contenant des informations sur les magasins, les ventes et les inventaires.
 - UC7 – Visualiser les magasins dans un tableau de bord : Un gestionnaire peut consulter un tableau de bord pour avoir une vue d’ensemble de la situation des magasins.
 
+![alt text](../../images/cas_utilisation.png)
+
 # 6. Structure logique
 
 - `app/` : backend du magasin local
@@ -89,16 +93,50 @@ Ensuite, j’ai implémenté le patron de conception Singleton pour le client, p
 
 # 10. Décisions d’architecture (ADR)
 
+## Titre 1
+Choix de mécanisme de base de données (SQL vs NoSQL, local vs serveur)
+
+## Contexte
+Je dois choisir un mécanisme de base de donner pour l'application de système de caissier dans un magasin :
+- Je veux que les données sont classées dans des tableaux. 
+- Je veux qu'il soit facile à maintenir.
+- Je veux que les données puissent être utilisées localement.
+
+## Décision
+J'ai décidé d'utiliser une base de données SQL, car elle est plus approprié pour structurer les données sous forme de tables avec des relations entre elles. Cela permet de faciliter la maintenance.  La base de donnée sera en serveur, car l'application sera utilisée sur plusieurs magasins.
+
+## Statut
+Accepté
+
+## Conséquences
+1. Plusieurs tables relationnelles seront créées pour modéliser les entités de l'application.
+2. Les données seront sauvegradées localement sur l'appareil. Il faudra mettre en place une méthode de sauvegarde régulière pour en cas de changement d'appareil.
+3. Le système ne dépendra pas à un réseau de connexion.
+4. Changer de mécanisme de base de données sera un défi, car les requêtes nécessaires pour obtenir les mêmes résultats ne seront pas identiques.
 
 
 
+## Titre 2
+Choix de mécanisme de base de données (SQL vs NoSQL, local vs serveur)
 
+## Contexte
+Je dois choisir un mécanisme de base de donner pour l'application de système de caissier dans un magasin :
+- Je veux que les données sont classées dans des tableaux. 
+- Je veux qu'il soit facile à maintenir.
+- Je veux que les données puissent être utilisées localement.
 
+## Décision
+J'ai décidé d'utiliser une base de données SQL, car elle est plus approprié pour structurer les données sous forme de tables avec des relations entre elles. Cela permet de faciliter la maintenance.  La base de donnée sera en serveur, car l'application sera utilisée sur plusieurs magasins.
 
+## Statut
+Accepté
 
-
-
-
+## Conséquences
+1. Plusieurs tables relationnelles seront créées pour modéliser les entités de l'application.
+2. Les données seront sauvegradées localement sur l'appareil. Il faudra mettre en place une méthode de sauvegarde régulière pour en cas de changement d'appareil.
+3. Le système ne dépendra pas à un réseau de connexion.
+4. Changer de mécanisme de base de données sera un défi, car les requêtes nécessaires pour obtenir les mêmes résultats ne seront pas identiques.
+   
 
 # 11. Qualité
 

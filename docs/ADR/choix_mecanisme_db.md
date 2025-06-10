@@ -8,7 +8,7 @@ Je dois choisir un mécanisme de base de donner pour l'application de système d
 - Je veux que les données puissent être utilisées localement.
 
 ## Décision
-J'ai décidé d'utiliser une base de données SQL, car elle est plus approprié pour structurer les données sous forme de tables avec des relations entre elles. Cela permet de faciliter la maintenance.  La base de donnée sera locale, car l'application sera utilisée sur un seul appareil.
+J'ai décidé d'utiliser une base de données SQL, car elle est plus approprié pour structurer les données sous forme de tables avec des relations entre elles. Cela permet de faciliter la maintenance.  La base de donnée sera en serveur, car l'application sera utilisée sur plusieurs magasins.
 
 ## Statut
 Accepté
