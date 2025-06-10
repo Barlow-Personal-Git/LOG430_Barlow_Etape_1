@@ -47,6 +47,8 @@ Ensuite, ouvrez le fichier `.env` et modifiez la variable `DATABASE_URL` :
 - Remplacez `password` par le mot de passe de cet utilisateur
 - Remplez `table` par le nom de votre base de données (ex.: log430_lab)
 
+Note: la base de donnée mère est aussi dans ce fichier et le nom du magasin.
+
 6. Création des tables dans la base de données
 L’exécution pour la première fois crée les tables.
 ```
