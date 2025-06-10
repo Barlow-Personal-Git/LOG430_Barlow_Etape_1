@@ -1,3 +1,4 @@
+"""Créaction d'un PDF"""
 from fpdf import FPDF
 from sqlalchemy import func
 from .db import session
@@ -5,16 +6,21 @@ from .models import Transaction, Produit, Magasin, Inventaire, TransactionProdui
 
 
 class Rapport(FPDF):
+    """Configuration du rapport PDF"""
+
     def header(self):
+        """L'en-tête"""
         self.set_font('Arial', 'B', 16)
         self.cell(0, 12, 'Rapport des ventes', ln=1, align='C')
         self.ln(9)
 
     def section_title(self, title):
+        """Titre"""
         self.set_font('Arial', 'B', 12)
         self.cell(0, 10, title, ln=1)
 
     def add_table_model(self, data, col_widths):
+        """Tableau"""
         for row in data:
             for index, value in enumerate(row):
                 self.cell(col_widths[index], 10, str(value), border=1)
@@ -22,6 +28,7 @@ class Rapport(FPDF):
 
 
 def generer_rapport_pdf():
+    """Générer le rapport pdf"""
     pdf = Rapport()
     pdf.add_page()
 
@@ -31,7 +38,9 @@ def generer_rapport_pdf():
         func.sum(TransactionProduit.nbr)
     ).select_from(Magasin)\
         .join(Transaction, Transaction.id_magasin == Magasin.id_magasin)\
-        .join(TransactionProduit, TransactionProduit.id_transaction == Transaction.id_transaction)\
+        .join(
+            TransactionProduit,
+            TransactionProduit.id_transaction == Transaction.id_transaction)\
         .group_by(Magasin.nom)\
         .all()
 

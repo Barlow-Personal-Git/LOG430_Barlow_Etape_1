@@ -106,11 +106,25 @@ def dashboard():
     )
 
     data = {
-        "ca_par_magasin": [{"magasin": m, "chiffre_affaires": ca} for m, ca in chiffre_affaires_par_magasin],
-        "ruptures_stock": [{"magasin": m, "produit": p, "quantite": q} for m, p, q in ruptures],
-        "surstock": [{"magasin": m, "produit": p, "quantite": q} for m, p, q in surstock],
+        "ca_par_magasin": [
+            {
+                "magasin": magasin, "chiffre_affaires": chiffre_affaires
+            } for magasin, chiffre_affaires in chiffre_affaires_par_magasin
+        ],
+        "ruptures_stock": [
+            {
+                "magasin": magasin, "produit": produit, "quantite": quantite
+            } for magasin, produit, quantite in ruptures
+        ],
+        "surstock": [
+            {
+                "magasin": magasin, "produit": produit, "quantite": quantite
+            } for magasin, produit, quantite in surstock
+        ],
         "tendances_hebdomadaires": [
-            {"magasin": m, "date": d.isoformat(), "chiffre_affaires": ca} for m, d, ca in tendances
+            {
+                "magasin": magasin, "date": date.isoformat(), "chiffre_affaires": chiffre_affaires
+            } for magasin, date, chiffre_affaires in tendances
         ]
     }
 
