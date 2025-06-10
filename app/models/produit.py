@@ -11,8 +11,8 @@ class Produit(Base):
     nom = Column(String)
     prix = Column(Float)
     description = Column(String)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    created_at = Column(DateTime, default=func.now)
+    updated_at = Column(DateTime, default=func.now, onupdate=func.now)
 
     inventaires = relationship("Inventaire", back_populates="produit")
     transactions = relationship("TransactionProduit", back_populates="produit")

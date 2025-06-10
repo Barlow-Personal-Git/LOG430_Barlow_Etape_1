@@ -11,5 +11,5 @@ class MessageAlerte(Base):
     id_produit = Column(Integer, ForeignKey('produits.id_produit'))
     magasin = Column(String)
     message = Column(String)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    created_at = Column(DateTime, default=func.now)
+    updated_at = Column(DateTime, default=func.now, onupdate=func.now)

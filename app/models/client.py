@@ -11,8 +11,8 @@ class Client(Base):
     id_client = Column(Integer, primary_key=True)
     nom = Column(String, nullable=False)
     role = Column(String, default="user", nullable=False)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    created_at = Column(DateTime, default=func.now)
+    updated_at = Column(DateTime, default=func.now, onupdate=func.now)
     
     transactions = relationship("Transaction", back_populates="client")
 

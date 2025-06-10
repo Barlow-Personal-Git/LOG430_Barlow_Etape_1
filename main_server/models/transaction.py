@@ -12,8 +12,8 @@ class Transaction(Base):
     id_magasin = Column(Integer, ForeignKey(
         'magasins.id_magasin'), nullable=False)
     total = Column(Float)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    created_at = Column(DateTime, default=func.now)
+    updated_at = Column(DateTime, default=func.now, onupdate=func.now)
 
     produits = relationship(
         "TransactionProduit",
