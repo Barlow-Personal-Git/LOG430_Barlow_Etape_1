@@ -1,5 +1,5 @@
 """Transaction model"""
-from sqlalchemy import Column, Integer, ForeignKey, Float, DateTime, func
+from sqlalchemy import Column, Integer, ForeignKey, Float
 from sqlalchemy.orm import relationship
 from .base import Base
 
@@ -12,9 +12,7 @@ class Transaction(Base):
     id_client = Column(Integer, ForeignKey(
         'clients.id_client'), nullable=False)
     total = Column(Float)
-    created_at = Column(DateTime, default=func.now)
-    updated_at = Column(DateTime, default=func.now, onupdate=func.now)
-
+    
     produits = relationship(
         "TransactionProduit",
         back_populates="transaction",
