@@ -1,4 +1,4 @@
-"""Init app""" 
+"""Init app"""
 from .db import session
 from .models import Produit, Inventaire, Client, Transaction
 from .controllers import (

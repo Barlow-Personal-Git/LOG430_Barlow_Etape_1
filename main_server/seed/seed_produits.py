@@ -1,5 +1,6 @@
 """Seed Produit"""
-from app import session, Produit
+from main_server.db import session
+from main_server.models import Produit
 
 
 def seed_produits():

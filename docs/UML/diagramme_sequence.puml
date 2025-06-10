@@ -1,12 +1,16 @@
 @startuml
 actor Client
-participant "Vente"
-participant "Inventaire"
-participant "SQLite"
+participant "Login"
+participant "Menu"
+participant "Menu_Achat"
+participant "PostgreSQL"
+participant "Produit"
 
-Client -> "Vente" : enregisterVente(produits)
-"Vente" -> "Inventaire" : verifierInventaire()
-"Inventaire" -> "Vente" : ok
-"Vente" -> "SQLite" : enregistrer()
-"SQLite" -> "Vente" : ok
+Client -> "Login" : login()
+"Login" -> "Menu" : menu_principal()
+"Menu" -> "Menu_Achat" : menu_achat()
+"Menu_Achat" -> "PostgreSQL" : session()
+"PostgreSQL" -> "Produit" : add()
+"Produit" -> "Menu_Achat" : ok
+"Menu_Achat" -> "Client" : ok
 @enduml

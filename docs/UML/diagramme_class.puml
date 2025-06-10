@@ -4,36 +4,39 @@ class Produit {
     -idProduit: int
     -nom: string
     -prix: float
-    -quantite: int
+    -description: string
 }
 
 class Inventaire {
-    -produits: List<Produit>
-}
-
-class Vente {
-    -idVente: int
-    -produits: List<Produit>
-    -total: float
-    +calculerTotal(): float
-}
-
-class Menu {
-    +recherche(): Produit
-    +addProduit(): void
+    -id_inventaire: int
+    -id_produit: int
+    -category: string
+    -nbr: int
 }
 
 class Client {
-    -idClient: int
+    -id_client: int
     -nom: string
-    -username: string
-    -password: string
+    -role: string
 }
 
-Inventaire "1" -- "0..*" Produit : contient >
-Vente "1" -- "1..*" Produit : peut >
-Menu "1" -- "1" Inventaire : consute >
-Client "1" -- "1" Menu : utilise >
-Vente "1" -- "1" Client : procure par >
+class TransactionProduit {
+    -id_transaction_produit: int
+    -id_transaction: int
+    -id_produit: int
+    -nbr: int
+    -total: float
+}
+
+class Transaction {
+    -id_transaction: int
+    -id_client: int
+    -total: float
+}
+
+Client "1" -- "0..*" Transaction : contient >
+Inventaire "1" -- "0..*" Produit : possède >
+Produit "0..*" -- "0..*" TransactionProduit : présente >
+TransactionProduit "1..*" -- "1" Transaction : contient >
 
 @enduml
